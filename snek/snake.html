@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Snake</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        canvas {
+            display: block;
+            background: #ffffff;
+            border: 1px solid #cccccc;
+        }
+
+        .game-wrap {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        .overlay-btn {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+
+            /*size*/
+            width: 50px;
+            height: 50px;
+            padding: 5px;
+            /*display: flex;*/
+            align-items: center;
+            justify-content: center;
+
+            /*color*/
+            background: rgb(0, 167, 17);
+            color: red;
+            border: none;
+            border-radius: 20%;
+
+            /* Interaction */
+            cursor: pointer;
+            transition: background 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Hover */
+        .overlay-btn:hover {
+            background: rgb(29, 192, 45);
+            transform: translate(-50%, -52%);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Active - while pressed*/
+        .overlay-btn:active {
+            background:  rgb(0, 87, 9);
+            transform: translate(-50%, -45%);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+        }
+
+        #retryBtn {
+            top: 60%;
+            left: 40%;
+        }
+
+        #homeBtn {
+            top: 60%;
+            left: 60%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="game-wrap">
+        <canvas id="game" width="400" height="400"></canvas>
+
+        <button id="startBtn" class="overlay-btn" aria-label="Start game">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+            </svg>
+        </button>
+
+        <button id="retryBtn" class="overlay-btn" aria-label="Retry game" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l.73-.73" />
+            </svg>
+        </button>
+
+        <button id="homeBtn" class="overlay-btn" aria-label="Return home" hidden>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M3 11.5 12 4l9 7.5V21a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-9.5Z" />
+            </svg>
+        </button>
+
+    </div>
+
+    <script type="module" src="./snake.js"></script>
+</body>
+
+</html>
