@@ -296,18 +296,22 @@
       }
     }
 
-    /* Tablet: cards become a two-column layout when space allows */
-    @media (max-width: 900px) {
+    /* Tablet: exactly 2 cards by 2 cards */
+    @media (min-width: 601px) and (max-width: 900px) {
       body {
         align-items: flex-start;
       }
 
       .menu {
-        width: min(700px, calc(100% - 40px));
+        width: min(650px, calc(100% - 40px));
         padding: 48px 16px;
       }
 
       .games {
+        display: grid;
+        grid-template-columns: repeat(2, 270px);
+        justify-content: center;
+        align-items: center;
         gap: 28px;
       }
 
@@ -489,8 +493,8 @@
 
       border-radius: 15%;
 
-      opacity: 0;
-      pointer-events: none;
+      opacity: 1;
+      pointer-events: auto;
 
       box-shadow: 0 5px 16px rgba(0, 0, 0, 0.18);
 

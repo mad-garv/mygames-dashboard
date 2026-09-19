@@ -1,3 +1,4 @@
 {
-    "livePreview.defaultPreviewPath": "/brick-breaker/brick-breaker.html"
+    "livePreview.defaultPreviewPath": "/brick-breaker/brick-breaker.html",
+    "liveServer.settings.port": 5501
 }
