@@ -3,8 +3,18 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Games</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      overflow-x: hidden;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -218,16 +228,15 @@
       position: relative;
       z-index: 1;
 
-      width: min(1200px, calc(100vw - 80px));
+      width: min(1200px, calc(100% - 32px));
 
       background: transparent;
       border: none;
       box-shadow: none;
 
-      padding: 40px 20px;
+      padding: 40px 16px;
 
       text-align: center;
-
       overflow: hidden;
     }
 
@@ -241,6 +250,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-wrap: wrap;
 
       gap: 35px;
 
@@ -286,9 +296,19 @@
       }
     }
 
+    /* Tablet: cards become a two-column layout when space allows */
     @media (max-width: 900px) {
+      body {
+        align-items: flex-start;
+      }
+
+      .menu {
+        width: min(700px, calc(100% - 40px));
+        padding: 48px 16px;
+      }
+
       .games {
-        flex-wrap: wrap;
+        gap: 28px;
       }
 
       #snake,
@@ -296,6 +316,90 @@
       #brick-breaker,
       #flappybird {
         top: 0;
+      }
+
+      h1 {
+        margin-bottom: 42px;
+      }
+    }
+
+    /* Phone: one full-size game card per row */
+    @media (max-width: 600px) {
+      body {
+        display: block;
+        min-height: 100dvh;
+      }
+
+      .menu {
+        width: 100%;
+        padding: 32px 16px 40px;
+      }
+
+      h1 {
+        margin-bottom: 32px;
+        font-size: clamp(24px, 7vw, 30px);
+        line-height: 1.2;
+      }
+
+      .games {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 24px;
+      }
+
+      .game-card,
+      .demo-wrapper {
+        width: min(270px, calc(100vw - 48px));
+        height: min(270px, calc(100vw - 48px));
+      }
+
+      .game-card {
+        flex: 0 0 auto;
+      }
+
+      .play-overlay {
+        width: 56px;
+        height: 56px;
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .play-overlay svg {
+        width: 30px;
+        height: 30px;
+      }
+
+      .game-demo {
+        transform: scale(0.675);
+        transform-origin: top left;
+      }
+
+      #doodlejumpdemo {
+        transform: translateY(-65px) scale(0.675);
+        transform-origin: top left;
+      }
+
+      #flappybirddemo {
+        transform: translateX(-50px) scale(0.675);
+        transform-origin: top left;
+      }
+    }
+
+    /* Very narrow phones, such as 320px-wide screens */
+    @media (max-width: 360px) {
+      .menu {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .game-card,
+      .demo-wrapper {
+        width: calc(100vw - 32px);
+        height: calc(100vw - 32px);
+      }
+
+      .games {
+        gap: 20px;
       }
     }
 
@@ -417,26 +521,38 @@
     }
 
     #doodlejumpdemo {
-  width: 400px;
-  height: 533px;
+      width: 400px;
+      height: 533px;
 
-  transform:
-    translateY(-65px)
-    scale(0.675);
+      transform:
+        translateY(-65px) scale(0.675);
 
-  transform-origin: top left;
-}
+      transform-origin: top left;
+    }
 
-#flappybirddemo {
-  width: 600px;
-  height: 400px;
+    #flappybirddemo {
+      width: 600px;
+      height: 400px;
 
-  transform:
-    translateX(-50px)
-    scale(0.675);
+      transform:
+        translateX(-50px) scale(0.675);
 
-  transform-origin: top left;
-}
+      transform-origin: top left;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .asteroid,
+      .game-card {
+        animation: none;
+      }
+
+      .game-card,
+      .game-demo,
+      .play-overlay {
+        transition: none;
+      }
+    }
   </style>
 </head>
 
