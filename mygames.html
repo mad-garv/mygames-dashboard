@@ -296,7 +296,8 @@
       }
     }
 
-    /* Tablet: exactly 2 cards by 2 cards */
+    /* Tablet: fixed, aligned 2 x 2 game-card grid */
+    /* Tablet: fixed, aligned 2 x 2 game-card grid */
     @media (min-width: 601px) and (max-width: 900px) {
       body {
         align-items: flex-start;
@@ -310,16 +311,33 @@
       .games {
         display: grid;
         grid-template-columns: repeat(2, 270px);
+        grid-template-rows: repeat(2, 270px);
         justify-content: center;
-        align-items: center;
+        align-items: start;
+        justify-items: center;
         gap: 28px;
+      }
+
+      .game-card {
+        width: 270px;
+        height: 270px;
+        margin: 0;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none;
+
       }
 
       #snake,
       #doodlejump,
       #brick-breaker,
       #flappybird {
-        top: 0;
+        position: relative;
+        top: 0 !important;
+        right: auto;
+        bottom: auto;
+        left: 0 !important;
+        margin: 0;
       }
 
       h1 {
@@ -386,6 +404,23 @@
       #flappybirddemo {
         transform: translateX(-50px) scale(0.675);
         transform-origin: top left;
+      }
+
+      #snake,
+      #doodlejump,
+      #brick-breaker,
+      #flappybird {
+        position: relative;
+        top: 0 !important;
+        right: auto;
+        bottom: auto;
+        left: 0 !important;
+        margin: 0;
+      }
+
+      .game-card {
+        animation: none;
+        transform: none;
       }
     }
 
